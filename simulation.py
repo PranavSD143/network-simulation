@@ -4,7 +4,7 @@ from application_layer.http_client import BrowserHTTPClient as ob
 from transport_layer.tcp_transport import TCPTransport
 from network_layer.network_layer import SimpleIPNetwork
 
-# Your existing code
+
 url = "http://localhost:8000/echo"
 method = "GET"
 headers = {
@@ -15,7 +15,7 @@ body = "Testing the stack"
 
 client = ob(method, url, headers, body)
 http_bytes = client.build_http_request_bytes()
-host, port = client.get_host_port()
+
 dest_ip = "127.0.0.1"
 net = SimpleIPNetwork("127.0.0.1", dest_ip)
 
