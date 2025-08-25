@@ -60,8 +60,10 @@ class TCPTransport(TransportLayer):
 
     def receive(self):
         packet = self.network_layer.receive()  
+        if not packet:
+            return None
         tcp_segment = packet[20:]
         data_offset = (tcp_segment[12] >> 4) * 4
-        payload = packet[data_offset:]
+        payload = tcp_segment[data_offset:]
         return payload
     
